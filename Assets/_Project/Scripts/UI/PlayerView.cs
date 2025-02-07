@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class PlayerView : MonoBehaviour
 {
-    [SerializeField] private ProgressBar _oxygenBar;
-    [SerializeField] private ProgressBar _gasBar;
+    [SerializeField] private DividedProgressBar _oxygenBar;
+    [SerializeField] private DividedProgressBar _gasBar;
     [SerializeField] private TMP_Text _timerText;
+    [SerializeField] private GameObject _deathScreen;
 
-    public ProgressBar OxygenBar => _oxygenBar;
-    public ProgressBar GasBar => _gasBar;
+    public DividedProgressBar OxygenBar => _oxygenBar;
+    public DividedProgressBar GasBar => _gasBar;
 
      
     public void SetTime(int seconds)
@@ -20,5 +21,10 @@ public class PlayerView : MonoBehaviour
         string minutesString = minutes < 10 ? $"{minutes}" : $"{minutes}";
 
         _timerText.text = $"{minutesString} : {secondsString}";
+    }
+
+    public void ActiveDeathScreen(bool active)
+    {
+        _deathScreen.SetActive(active);
     }
 }
